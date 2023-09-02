@@ -1,0 +1,597 @@
+SELF INTRODUCTION:
+Myself --Name-- am from --Place--
+I have --exp-- of years as software engineeer in --CompanyName--
+I have good experience in Automation Testing using Java, selenium, Cucumber, Junit, DataDriven and Test Ng framework.
+I also have good experience in maintaining code at Azure repos and also executing my scripts in Azure Pipelines.
+I have good experience in working Agile Scrum methodology, Participated in Retro, Backlog Refinement or Sprint Grooming, Standup Meeting, Sprint Demo.
+In Daily scrum we will discuss what we did yesterday and the In progress task for today.
+Demo will be given by the developers.
+In Grooming session we will discuss on picking up the stories based on the priority from the product owners.
+Retro meeting we will discuss what went well in the completed sprint and what didn't went well and also what are the improvements needed to increase team collaboration
+and the productivity.
+
+We are a Team of 9 Members 6 Developers, 3 QA.
+
+PROJECT:
+Coming to my project, my project name is --Project Name-- Danceshopper.com based on New Jersey that is united states
+It is an e-commerce domain project which focusses on selling the dance accessories for men, women and kids.
+
+FUNCTIONALITY:
+Pages such as Category page, Listing page, Detail page, Wishlist page, Cart page, Checkout page, Login Page, Signup page, Chat with us page etc.
+It has Category Page that will be 1 for mens, women,kids, category, costumes, fabric,jewellery,cosematics etc.
+For Each category we will have the Listing page that will list all the products.
+We can select any one project and then it will navigate to the detail page. 
+In the detail page we can select the size, color, quantity, compare option,add to bag and add to wishlist.
+We have payment page, which was there in one of our project we will validate them using the dummy Stripe cards and then Paypal sandbox.
+
+
+NEW IMPLEMENTATION:
+The most recent implementation was the Fabric section, Music DVD section, Clearance Section with the offers.
+In fabric section new features such as length, width selection was implemented which is new compared to the other product.
+Using this one user can purchase the cloth size as per their wish.
+Music and Dvd section we can see the albums related to the dance that can be purchased.
+Clearance section we have some offers for the clearance stocks that will be unique based on the project.
+
+PRODUCTION ISSUE:
+We missed a sort functionality and it went live. 
+While doing some Sanity testing in production environment we found this issue. 
+The issue was sort was not working when the user switched to next pages. 
+Then we again made a hotfix for that one. 
+After this incident we created vital test cases even if automation gets passed we are validating them manually.
+
+
+AUTOMATION FRAMEWORK STRUCTURE:
+We have below source folders
+Src/Main/Java-- In this one we will be having the Base Class i.e., the reusable methods.
+Src/Test/Java-- In this we will have then Feature files , Step Definition classes, Test Runner classes.
+Src/Test/Resource-- In this we will have then Resource folders such as Drivers, Property file of cucumber report, Data sheet to maintain the logins.
+Pom.xml-- In this we will have all the dependencies which is used by the Maven Build management to download all the required libraries.
+Cucumber core 7.0.0
+Cucumber java 7.0.0
+Cucumber junit 7.0.0
+Junit 4.12
+Extent report dependency 5.0.4
+Selenium hq dependency 4.1.2
+Testng 7
+
+MAVEN:
+It is a project management tool.
+Instead of adding the library files directly in to the project we can add them in the Pom.xml file so that it can downloaded over the network.
+It reduces the project size and also make the code portable.
+
+USED MAVEN GOALS:
+CLEAN--It cleans the previously compiled java class, installed packages.
+TEST--Test the compiled source code using a suitable unit testing framework. 
+INSTALL--It will install the library files based on the dependencies added.
+COMPILE--compile the source code of the project
+
+
+
+TEST RUNNER CLASS:
+It is a starting point for Junit to start executing your tests.
+This class will use the Junit annotation @RunWith(), which tells JUnit what is the test 
+runner class.
+As Cucumber uses Junit we need to have a Test Runner class.
+
+@CucumberOptions(tags = "@login", features = { "src\\test\\java\\com\\cucumber\\feature" }, glue = {
+		"com.cucumber.definitions" }, plugin = {}, dryRun = true, monochrome = true)
+
+BDD:
+Behavior Driven Development 
+framework allows automation of functional validations in easily readable and 
+understandable format to Business Analysts, Developers, Testers, etc.
+
+
+CUCUMBER:
+Setting monochrome true will display the console output in more readable way.
+Setting dryRun as true will validate the compilation errors, that is it will check for the missing steps and generate them in console.
+In Plugin we have to give the report configuration.
+Feature annotation is used to give the feature file path.
+Glue annotation is used to give the step definition file path.
+Setting Strict true will fail the execution if there is any mmissing steps.
+
+
+
+FEATURE:
+Feature File is the entry point to the Cucumber tests. 
+This is a file where you will describe your tests in Descriptive language
+Feature file can contains a list of scenario in the particular feature.
+For Example if it is as Login feature, the it will have all the scenarios related to that login feature.
+
+Background keyword is used to define steps which are common to all the tests in the feature file. This will execute before each scenario.
+Scenario Each Feature will contain some number of tests to test the feature. Each test is called a Scenario
+Given In this we will set the precondition
+When In this one we will give the test action or input action
+Then It is used for the verification purpose that is validating the output of when action.
+And It is used to add conditions to your steps
+But It is used to add negative validations
+
+HOOKS:
+It is used to run before and after each scenario.
+It will run before the background.
+We need to create a separate class called Hooks and then in this we need to annotate a method using the @before and @after. so that it will run accordingly.
+
+
+STEPDEFINITION:
+For each gherkin line in the feature file the corresponding java code will be there in the step definition
+
+
+
+JUNIT:
+JUnit is a unit testing framework for the Java programming language. 
+It has annotations, methods and the assertions.
+
+ANNOTATIONS:
+Using @Runwith annotation we can suite the cucumber feature files together. It tells 
+@Runwith(Cucumber.class)
+@Suite.SuiteClasses ({test1.class, test2.class})
+@BeforeClass, @AfterClass, @Before, @After, @Test, @Ignore
+
+JUNIT METHODS:
+//To get result
+Result result = JUnitCore.runClasses(Junit.class, Junit1.class);
+//to get failurecount
+System.out.println(result.getFailureCount());
+//to get ignore count
+System.out.println(result.getIgnoreCount());
+// to get run time for test case
+System.out.println(result.getRunTime());
+// to get run count
+System.out.println(result.getRunCount());
+// to get failures cases
+List<Failure> failures = result.getFailures();
+for (Failure failure : failures) {
+System.out.println(failure);
+
+ASSERT:
+If the assert is true then program will not execute further.
+AssertEquals, AssertNotEquals, AssertTrue, AssertNotTrue,
+
+VERIFY:
+The verfify is true then also it will execute.
+
+
+POM:
+Page Object Model
+POM is an object repository design pattern.
+POM creates our testing code maintainable and reusable where test objects and functions are separated from each other.
+Using this we can create a class for each of the Page in our application and place the object separately.
+Page factory is an optimized way to create object repository.
+
+
+@FindBy can accept tagName, partialLinkText, name, linkText, id, css, className, xpath as attributes.
+@FindBys : When the required WebElement objects need to match all of the given criteria use 
+@FindAll : When required WebElement objects need to match at least one of the given criteria use @FindAll annotation
+
+DATADRIVEN:
+Data driven framework is used to retrieve data from the excel sheet.
+We will keep all the test data in this file and the retrieve it during during test execution.
+
+File and file input stream is class
+Workbook,sheet,row,cell is interface
+
+<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi-ooxml</artifactId>
+    <version>5.2.3</version>
+</dependency>
+
+Write:
+File f= new File("C:\\Users\\Prakash\\eclipse-workspace\\DataDrivenProgram\\prakash.xlsx");
+FileInputStream fis = new FileInputStream(f);
+Workbook wb= new XSSFWorkbook(fis);
+Sheet S= wb.getSheetAt(0);
+Row r= S.getRow(0);
+Cell c=r.getCell(0);
+c.setCellValue("john");
+FileOutputStream fos = new FileOutputStream(f);
+wb.write(fos);
+wb.close();
+
+Write by Creating cell:
+File f= new File("C:\\Users\\Prakash\\eclipse-workspace\\DataDrivenProgram\\prakash.xlsx");
+		FileInputStream fis = new FileInputStream(f);
+		Workbook wb= new XSSFWorkbook(fis);
+		Sheet S= wb.getSheetAt(0);
+		S.createRow(2);
+		Row r= S.getRow(2);
+		r.createCell(2);
+		Cell c=r.getCell(2);
+		c.setCellValue("john");
+		FileOutputStream fos = new FileOutputStream(f);
+		wb.write(fos);
+		wb.close();
+
+Read from cell:
+File f= new File("C:\\Users\\Prakash\\eclipse-workspace\\DataDrivenProgram\\prakash.xlsx");
+		FileInputStream fis = new FileInputStream(f);
+		Workbook wb= new XSSFWorkbook(fis);
+		Sheet S= wb.getSheetAt(0);
+		Row r= S.getRow(2);
+		Cell c=r.getCell(1);
+		long d = (long) c.getNumericCellValue();
+		String s =String.valueOf(d);
+		System.out.println(s);
+
+
+TESTNG:
+
+@BeforeSuite: The annotated method will be run before all tests in this suite have run.
+@AfterSuite: The annotated method will be run after all tests in this suite have run.
+@BeforeTest: The annotated method will be run before any test method belonging to the
+classes inside the tag is run.
+@AfterTest: The annotated method will be run after all the test methods belonging to
+the classes inside the tag have run.
+@BeforeGroups: The list of groups that this configuration method will run before. This
+method is guaranteed to run shortly before the first test method that belongs to any of
+these groups is invoked.
+@AfterGroups: The list of groups that this configuration method will run after. This
+method is guaranteed to run shortly after the last test method that belongs to any of
+these groups is invoked.
+@BeforeClass: The annotated method will be run before the first test method in the
+current class is invoked.
+@AfterClass: The annotated method will be run after all the test methods in the current
+class have been run.
+@BeforeMethod: The annotated method will be run before each test method.
+@AfterMethod: The annotated method will be run after each test method.
+@Test: The annotated method is a part of a test case.
+
+
+
+DataProvider:
+A Data Provider is a method on your class that returns an array of objects to the called test method.
+ DataProvider allows us to run the test method multiple time with different set of data. 
+
+
+	@DataProvider(name = "prak")
+	public Object[] data() {
+		Object[] obj = { "prakash" };
+		return obj;
+
+	}
+
+	@Test(dataProvider = "prak")
+	public void testme(String name) {
+		System.out.print(name);
+		
+	}
+
+OUTPUT:prakash
+
+@Parameter is used to get the test data from the Testng.xml file
+
+@Parameters({ "first-name" })
+@Test
+public void testSingleString(String firstName) {
+}
+XML 
+<suite name="My suite">
+  <parameter name="first-name"  value="Cedric"/>
+  <test name="Simple example">
+
+
+@Ignore,invocationcount,priority,dependsonMethod,timeout
+
+Select class:
+Ex: for select using visible text method
+Select sc = new Select(element);
+sc.selectByVisibleText(val);
+Methods in drop down:
+1. SelectByIndex
+2. SelectByValue
+3. SelectByVisibletext
+4. Getoptions
+5. Getallselectedoptions
+6.Getfirstselectedoption
+7. Ismultiple
+// to deselect 
+8. deSelectByIndex
+9. deSelectByValue
+10. deSelectByVisibletext
+11.Deselectall
+isMultiple():
+It is a method, used to check we can able to select multiple values or not
+getAllSelectedOptions()
+It is a method, used to print all selected option
+
+
+
+---------------------------------------------------------------------------------MANUAL TESTING------------------------------------------------------------------------------------------------------
+
+METHODS OF TESTING:
+
+Black Box Testing - is done without knowing the internal codes and structure of the program. 
+The testing is done from the customer’s point of view and the tester knows only about the inputs and the expected outputs of the application.
+
+White Box Testing - It is the testing method in which internal codes & structure of the software is known to the tester. 
+Tester should have better understanding of the source code.
+
+Gray Box Testing - Tester have partially knowledge on the internal codes and structure of the program.
+
+
+TESTING METHODOLOGIES AND TYPES:
+	
+Functional Testing:
+Validating each functions of the software application against the requirement specification. Its a type of Black box testing.
+
+Unit Testing:
+individual units or components of a software are tested.Mostly done by Developer team
+
+Integration testing:
+individual units / components are combined and tested as a group. The purpose of this level of testing is to expose faults in the interaction between integrated units.
+
+System testing:
+testing the  complete and fully integrated software product. Each and every functionalities will be tested.
+
+User Acceptance Testing (UAT):
+It is a type of testing performed by the end user or the client to verify/accept the software application before moving to the production environment.
+
+Smoke Testing
+It is a type of testing where critical functionalities will be tested after the software build, to ensure whether the latest built is stable or not. 
+It is executed “before” any detailed functional or regression tests are executed on the software build.
+
+Sanity testing:
+Performed after receiving a software build, with minor changes in code, or functionality, to ensure that the bugs have been fixed and no further issues are introduced due to these changes.
+
+Regression testing:
+Is testing the existing software application  to make sure that a new change made on the application hasn't broken any existing functionality. Also called as Impact testing.
+
+End-to-End Testing:
+It is a methodology used to test whether the flow of an application is performing as designed from start to finish.
+
+Non-functional testing:
+Is a type of testing to check non-functional aspects (performance, Security, reliability, etc.) of a software application.
+
+Performance Testing
+evaluating the performance of the software application under particular load. By using this stability of the software is evaluated.
+
+Load testing:
+testing the application by constantly and steadily increasing the load on the application until it reaches the threshold limit.
+
+Stress testing:
+testing the application using load beyond the threshold limit, in order to find the behaviour of the application in extreme condition. Its a type of negative testing.
+
+Security Testing:
+It is a type of Software Testing that uncovers vulnerabilities of the application and determines that the data and resources of the application are protected from possible intruders.
+
+Adhoc testing: 
+is unplanned testing. It doesn’t have any specific approach defined neither it has any documentation associated with it. 
+Adhoc testing is entirely informal, and the only important factor is the knowledge and insight of the tester. Only suitable for Manual testing.
+
+Exploratory testing: 
+performed when the documentation of the test is poor, and we have a short time for execution. 
+It requires creativity of the tester and also the tester’s product knowledge.Only suitable for Manual testing.
+
+
+Levels of Testing:
+-Unit Testing 
+-Integration Testing 
+-System Testing 
+-Acceptance Testing
+
+Static Testing or Verification - 
+It is a form of software testing where the actual program or application is not used. 
+It is done without execution of the code. Static testing is done to avoid errors at an early stage of development. 
+Eg- Code review, Requirement and design specification review, Walkthroughs. It is also called Verification and its a type of white box testing.
+
+Dynamic testing or Validation - 
+It is done on the actual application to ensure that the specified requirement or not. 
+It will be carried out after the code deployment with the execution the code. It will be done at the later stage of development. 
+It involves functional and non-functional testing and comes under validation.
+
+
+Error:
+It is a human action that produces an incorrect result. The mistakes made by programmer is known as an ‘Error’.
+
+Bug: is the result of a coding Error in the program
+
+Defect: 
+is a deviation from the Requirements. 
+ A defect does not necessarily mean there is a bug in the code, it could be a function that was not implemented but defined in the requirements of the software.
+
+Failure
+ it is a deviation of the software from its intended purpose. It is reported by client or end user.
+
+Severity 
+is a parameter to denote the impact of a particular defect on the software. It is determined by Test Engineer.
+Types  -  Critical, Major, Minor, Low (spelling mistakes on the web page).
+
+Priority 
+is a parameter to decide the order in which defects should be fixed. It is determined by Product owner or Client.
+Types - High, Medium, Low.
+
+-----------------------------------------------------------------------------------LIFE CYCLE----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+DEFECT LIFE CYCLE:
+
+NEW-->OPEN-->FIXED-->RETEST-->CLOSED
+
+
+NEW Bug can be REJECTED if not valid
+FIXED Bug will be REOPENED if it is not working
+OPEN Bug may be deferred in current release if it not a priority one
+
+
+SOFTWARE TESTING LIFE CYCLE:
+
+REQUIREMENT ANALYSIS-->TEST PLANNING-->TEST CASE DEVELOPMENT-->ENVI SETUP-->TEST EXECUTION-->TEST CLOSURE
+
+SOFTWARE DEVELOPMENT LIFE CYCLE:
+
+REQUIREMENT ANALYSIS-->DESIGNING-->CODING-->TESTING-->DEPLOYMENT-->MAINTENANCE
+
+-----------------------------------------------------------------------------------DEVELOPMENT MODELS------------------------------------------------------------------------------------------------
+
+WATERFALL:
+The waterfall Model illustrates the software development process in a linear sequential flow. 
+One phase must be completed before the next phase can begin and there is no overlapping in the phases.
+
+AGILE:
+It is an incremental software development methodology where the application is developed step by step with focus on process adaptability 
+and customer satisfaction by rapid delivery of working software product. 
+Agile Methods break the product into small incremental builds. These builds are developed and provided to customers in iterations.
+Each iteration typically lasts from about one to three weeks.
+
+
+V-MODEL:
+execution of processes happens in a sequential manner in a V-shape. 
+It is also known as Verification and Validation model.
+This means that for every single phase in the development cycle, there is a directly associated testing phase.
+
+
+
+RTM:
+It is a document which maps the requirements against the test cases.
+Some application will have thousands of test cases.
+During regression we may miss few test cases.
+So RTM document helps to trace all are covered or not.
+
+
+BOUNDRY VALUE ANALYSIS:
+Focuses on boundry of a functionality so that we can diff between valid and invalid cases and also test the extermes.
+The reason of doing boundry value analysis is that errors tend to occur in extreme.
+using the BVA we can avoid this
+
+Example:
+If the password is between 8 to 16 the it will be valid one
+where the extreme boundaries are between below 8 and above 16
+
+
+Write the absolute xpath manually
+
+Sprint velocity is a measurement of how much an Agile team can produce during one normal sprint cycle. 
+You'll use two main variables to calculate sprint velocity: how much work your Agile team completed and how long it took them to complete that work.
+
+
+
+OVERLOAD and OVERRIDE STATIC METHODS:
+
+OVERLOADING:
+We can overload the static method but cannot override them.
+
+MAIN METHOD OVERLOADING:
+Yes we can overload main methods with the int arguments instead of String arguments.
+We will not get any compilation errors.
+But the JVM only executes the main method with public,static,string and void return type main methods.
+
+OVERRIDING:
+Parent obj1 = new Child();
+During overriding all methods in parent class will execute and then overrided methods in child class will get execute.
+We cannot override the static methods, override will not exists due to subclass method is hidden by the base class method. And only base class
+method will be executed.
+
+
+
+GIT:
+GIT CONFIG:
+It is used to set the author name and emaill address which is used to do the commit.
+$ git config --global user.name "ImDwivedi1"  
+$ git config --global user.email "Himanshudubey481@gmail.com"  
+
+
+GIT INIT:
+This command is used to create a local repository.
+
+$ git init Demo  
+
+
+GIT CLONE:
+It is used to clone the repo to the local.
+
+$ git clone URL  
+
+
+GIT ADD:
+This command is used to add one or more files to staging (Index) area.
+
+$ git add Filename  
+
+
+GIT COMMIT:
+It is used to commit the code to the staging.
+
+$ git commit -m " Commit Message"  
+
+
+GIT PUSH:
+It is used to push the code to the repo from the staging
+
+
+GIT PULL:
+It is used to pull the code to the working branch. It is used to receive the code.
+$ git pull URL  
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+JENKINS:
+
+It is used for allows continuous integration and continuous delivery of the applications.
+Using jenkins we can set up automated setup that will run at the given time and share the report once completed.
+
+1)First we need to check in our code to the repository.
+2)Then jenkins will pickup the latest code and trigger the build and run test.
+3)Output will be available in jenkins dashboard and then the notifications will be sent after completion via an email.
+
+
+CONTINUOUS INTEGRATION:
+Continuous Integration is a development practice that requires developers to integrate code into a shared repository at regular intervals. 
+This concept was meant to remove the problem of finding later occurrence of issues in the build lifecycle.
+once the code has be integrated then we can set the jenkins pipeline automatically.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

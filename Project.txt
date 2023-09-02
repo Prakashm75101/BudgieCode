@@ -1,0 +1,80 @@
+https://betsyfisher.com/
+
+
+https://happysolesfootwear.com/
+
+
+PROJECT:
+Coming to my project, my project name is Happysolesfootwear based on North dakota that is united states
+It is an e-commerce domain project which focusses on selling the footwear for men, women and kids.
+Front end of the application is jquery, angular js.
+backend is dotnet
+for database we are using sql server
+social media sign up is available via google,facebook,twitter..
+For inventory management we are using the OPS portal which is the dedicated backend application for our application.
+
+On dashboard page we will be having the home page banner which we can configure in Ops portal.
+And then we also have the categories banners such as men and women.
+By clicking any one of them, user will be navigated to the corresponding category of shoes.
+And below to that we also have the most popular products and the price slashed products.
+
+Going to Product list page-->For each categories shoes related to them will be listed in this page.
+User can click any one product and then it will be navigated to the product detail page.
+In the product detail page, detailed information of the product will be displayed.
+Like color, size, price, weight of the product etc.
+From here user can either add the product to the wishlist page or to the cart as per their need.
+From the cart user can checkout the product by doing the payment.
+Payments we just did some sanity check using the Paypal sandbox, where we will do payment using the dummy stripe cards and check whether it is 
+reflected.
+
+Most Recent Developments:
+The most recent implementation was the mens rocky boots,women rocky boots, Clearance Section with the offers.
+Clearance section we have some offers for the clearance stocks that will be unique based on the project.
+
+Roles and Responsibilities:
+I start my day by checking the emails.
+After that I check the board for any pending items on my name.
+If any pending items, I will work on them.
+During the standup which usually occurs at 11 am, I will provide quick update about the on-going work which am doing.
+During sprint time I will automate the stories completed in previous sprint based on the test case document
+During the regression time, I will execute the automation scripts and then review those reports.
+If any failure due to script I will fix them.
+If it was due to the application, I will test the bug manually and then log in to the JIRA board.
+
+Production Issue:
+We faces some sort issues, when the user navigates to next pages.
+And we also faced some performance issues during the clearance sales occuring at Black Friday sales.
+To resolve that issue our team has increased the server handling capacity comparitively.
+
+Difficulty faced:
+We also have a mobile app for our project which was still under development.
+Our manager ask to do a order in web and check whether it is reflecting in the mobile app.
+Since our framework supports only one driver at a time.
+It was really difficult to handle this.
+So after consulting with my leads, I created one more instance and completed this test case.
+
+
+
+
+PROJECT:
+Coming to my project, my project name is kroger based on united states
+It is an e-commerce domain project which focusses on selling the groceries,electronics,liquor and other household items
+Front end of the application is jquery, angular js.
+backend is dotnet
+for database we are using sql server
+social media sign up is available via google,facebook,twitter..
+For inventory management we are using the OPS portal which is the dedicated backend application for our application.
+We have several categories such as fresh goods ,grocery liquors, beauty products, dispensers, electronics etc.
+we also have the most popular products and the price slashed products.
+Going to Product list page-->By clicking any one of category, user will be navigated to the corresponding product listing page
+User can click any one product and then it will be navigated to the product detail page.
+In the product detail page, detailed information of the product will be displayed.
+Like price, weight of the product depends on the category.
+From here user can either add the product to the wishlist page or to the cart as per their need.
+From the cart user can checkout the product by doing the payment.
+Payments we just did some sanity check using the Paypal sandbox, where we will do payment using the dummy stripe cards and check whether it is 
+reflected.
+
+Most Recent Developments:
+The most recent implementation was the electronics, brands, Clearance Section with the offers.
+Clearance section we have some offers for the clearance stocks that will be unique based on the project.
